@@ -6,9 +6,9 @@ export type OpcaoResposta = {
 }
 
 export type Perguntas = {
-    id: number;
+    id?: number;
     pergunta: string
-    alternativas: Array<OpcaoResposta>;
+    alternativas?: Array<OpcaoResposta>;
 }
 
 export type Atributos = {

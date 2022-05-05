@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Dimensao } from "../../../types/domain/criarComponentesForm";
-import { listDimensao } from "../../../utils/listDimesao";
+import { mockListDimensao } from "../../../utils/mockListDimesao";
 import ContainerModal from "../container-modal";
 import { Container } from "./style";
 
@@ -15,8 +15,8 @@ const ModalDimensao = ({handle, stateModal}:ModalDimensaoProps)=>{
     const [listaDimensaoCadastrada, setListaDimensaoCadastrada] = useState<Array<Dimensao>>([])
     
     const addDimensaoLista = ()=>{
-        listDimensao.push({nomeDimensao:nomeDimensao})
-        setListaDimensaoCadastrada([...listDimensao])
+        mockListDimensao.push({nomeDimensao:nomeDimensao})
+        setListaDimensaoCadastrada([...mockListDimensao])
     }
 
     return(
@@ -31,8 +31,8 @@ const ModalDimensao = ({handle, stateModal}:ModalDimensaoProps)=>{
                     <button onClick={addDimensaoLista}>Add Dimensao</button>
                 </div>
                 <div>
-                    {listDimensao.length > 0 && (
-                        listDimensao.map((item)=>{
+                    {mockListDimensao.length > 0 && (
+                        mockListDimensao.map((item)=>{
                             return(
                                 <p>{item.nomeDimensao}</p>
                             )
