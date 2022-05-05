@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Dimensao } from "../../../types/domain/criarComponentesForm";
+import { listDimensao } from "../../../utils/listDimesao";
 import ContainerModal from "../container-modal";
 import { Container } from "./style";
 
@@ -14,7 +15,8 @@ const ModalDimensao = ({handle, stateModal}:ModalDimensaoProps)=>{
     const [listaDimensaoCadastrada, setListaDimensaoCadastrada] = useState<Array<Dimensao>>([])
     
     const addDimensaoLista = ()=>{
-        setListaDimensaoCadastrada([...listaDimensaoCadastrada, {nomeDimensao:nomeDimensao}])
+        listDimensao.push({nomeDimensao:nomeDimensao})
+        setListaDimensaoCadastrada([...listDimensao])
     }
 
     return(
@@ -29,8 +31,8 @@ const ModalDimensao = ({handle, stateModal}:ModalDimensaoProps)=>{
                     <button onClick={addDimensaoLista}>Add Dimensao</button>
                 </div>
                 <div>
-                    {listaDimensaoCadastrada.length > 0 && (
-                        listaDimensaoCadastrada.map((item)=>{
+                    {listDimensao.length > 0 && (
+                        listDimensao.map((item)=>{
                             return(
                                 <p>{item.nomeDimensao}</p>
                             )
