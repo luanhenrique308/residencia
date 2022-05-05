@@ -6,7 +6,7 @@ type ModalAdicinarDimensaoProps = {
     handle: () => void;
     stateModal: boolean
     children?: React.ReactNode;
-    title?: string
+    title?: string,
 }
 
 const ContainerModal = ({
