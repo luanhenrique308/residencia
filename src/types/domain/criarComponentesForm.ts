@@ -1,14 +1,14 @@
 
-export type OpcaoResposta = {
-    id: number;
-    opcao: string;
-    valorAtribuido: number;
+export type Alternativa = {
+    id?: number;
+    alternativa: string;
+    valorAlternativa: number;
 }
 
 export type Perguntas = {
     id?: number;
     pergunta: string
-    alternativas?: Array<OpcaoResposta>;
+    alternativas?: Array<Alternativa>;
 }
 
 export type Atributos = {
