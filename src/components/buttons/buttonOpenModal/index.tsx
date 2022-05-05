@@ -3,7 +3,7 @@ import { Container } from "./style";
 
 type ButtonOpenModalProps = {
     // label: 'Dimensões' | 'Atributos' | 'Perguntas';
-    handleOpenModal? : ()=> void;
+    handleOpenModal: ()=> void;
 }
 
 const ButtonOpenModal = ({handleOpenModal}:ButtonOpenModalProps)=>{

@@ -1,54 +1,33 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ButtonOpenModal from "../../components/buttons/buttonOpenModal";
 import DescricaoAlimentarBanco from "../../components/descricaoAlimentarBanco";
-import ModalDimensao from "../../components/modal/modal-dimensao";
+import ModalDimensao from "../../components/modal/dimensao-modal";
 import { Atributos, Dimensao } from "../../types/domain/criarComponentesForm";
 import { Container, ContainerDescricao, Content } from "./style";
 
 const AlimentarBancoForm = () => {
-  const [nomeDimensao, setNomeDimensao] = useState<string>('');
-  const [dimensao, setDimensao] = useState<Array<Dimensao>>([]);
-  const [nomeAtributo, setNomeAtributo] = useState<string>('');
-  const [atributo, setAtributo] = useState<Array<Atributos>>([]);
 
-  const [openSectionAddAtributo, setOpenSectionAddAtributo] = useState<boolean>(false);
-
-  const criarDimensao = () => {
-    setDimensao([...dimensao, { id: dimensao.length, nomeDimensao: nomeDimensao, atributos: [] }])
-  }
-
-  const handleSectionAddAtributo = () => {
-    setOpenSectionAddAtributo(state => !state);
-  }
-
-  const criarAtributo = (id?: number) => {
-    setAtributo([...atributo, { nomeAtributo: nomeAtributo, }])
-    const dimensaoCorrespondente = dimensao.filter(item => item.id === id);
-    dimensaoCorrespondente.map(item => {
-      item.atributos?.push({ nomeAtributo: nomeAtributo });
-    })
-  }
-
-  // const OpenModalDimensao = ()=>{
-
-  // }
+  const [isOpenModalDimensao, setIsOpenModalDimensao] = useState<boolean>(false);
+  const handleStateModal = useCallback(()=>{
+    setIsOpenModalDimensao(state=> !state);
+  },[isOpenModalDimensao])
 
   return (
     <Container>
       
       <Content>
-        <ModalDimensao />
+        <ModalDimensao stateModal={isOpenModalDimensao}  handle={handleStateModal}  />
         <ContainerDescricao>
           <DescricaoAlimentarBanco tipoDescricao='Dimensão' />
-          <ButtonOpenModal />
+          <ButtonOpenModal handleOpenModal={()=>handleStateModal()} />
         </ContainerDescricao>
         <ContainerDescricao>
           <DescricaoAlimentarBanco tipoDescricao='Atributo' />
-          <ButtonOpenModal />
+          {/* <ButtonOpenModal /> */}
         </ContainerDescricao>
         <ContainerDescricao>
           <DescricaoAlimentarBanco tipoDescricao='Pergunta' />
-          <ButtonOpenModal />
+          {/* <ButtonOpenModal /> */}
         </ContainerDescricao>
 
       </Content>

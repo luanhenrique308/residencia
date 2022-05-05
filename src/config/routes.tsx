@@ -6,7 +6,7 @@ const RootElement = ()=>{
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="alimentarBancoPerguntas" element={<AlimentarBancoForm />} />
+                <Route path="/" element={<AlimentarBancoForm />} />
             </Routes>
         </BrowserRouter>
     )
