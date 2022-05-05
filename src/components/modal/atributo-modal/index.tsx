@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Atributos, Dimensao } from "../../../types/domain/criarComponentesForm";
-import { listDimensao } from "../../../utils/listDimesao";
+import { mockListAtributo } from "../../../utils/mockListAtributos";
+import { mockListDimensao } from "../../../utils/mockListDimesao";
 import ContainerModal from "../container-modal";
 
 type ModalAtributoProps = {
@@ -13,11 +14,12 @@ type ModalAtributoProps = {
 const ModalAtributo = ({ name, stateModal = false, handle }: ModalAtributoProps) => {
 
     const [nomeAtributo, setNomeAtributo] = useState<string>('');
-    const [listAtributo, setListAtributo] = useState<Array<Atributos>>([]);
+    const [listaAtributo, setListaAtributo] = useState<Array<Atributos>>([]);
     // const dimensoes = listDimensao
 
     const adicionarAtributoList = () => {
-        setListAtributo([...listAtributo, { nomeAtributo: nomeAtributo }])
+        mockListAtributo.push({nomeAtributo:nomeAtributo})
+        setListaAtributo([...listaAtributo, { nomeAtributo: nomeAtributo }])
     }
 
     return (
@@ -30,7 +32,7 @@ const ModalAtributo = ({ name, stateModal = false, handle }: ModalAtributoProps)
                 <button onClick={adicionarAtributoList}>add atributo</button>
             </div>
             <select>
-                {listDimensao?.map((item) => {
+                {mockListDimensao?.map((item) => {
                     return (
                         <option>{item.nomeDimensao}</option>
                     )
@@ -38,7 +40,7 @@ const ModalAtributo = ({ name, stateModal = false, handle }: ModalAtributoProps)
             </select>
 
             <div>
-                {listAtributo.map((item)=>{
+                {listaAtributo.map((item)=>{
                     return(
                         <p>{item.nomeAtributo}</p>
                     )
