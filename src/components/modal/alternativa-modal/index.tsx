@@ -16,14 +16,14 @@ const ModalAlternativa = ({ handle, stateModal }: ModalAlternativaProps) => {
     const [idPerguntaSelecionada, setIdPerguntaSelecionada]= useState<number>(0);
 
     const adicionarAlternativasLista = () => {
-        mockListAlternativas.push({ alternativa: alternativa, valorAlternativa: valorAlternativa })
-        setListaAlternativas([...listaAlternativas, { alternativa: alternativa, valorAlternativa: valorAlternativa }])
-        filtraListaPergunta(idPerguntaSelecionada);
+        mockListAlternativas.push({ alternativa: alternativa, valorAlternativa: valorAlternativa, id:mockListAlternativas.length+1, id_Pergunta:idPerguntaSelecionada })
+        setListaAlternativas([...listaAlternativas, { alternativa: alternativa, valorAlternativa: valorAlternativa, id:mockListAlternativas.length+1, id_Pergunta:idPerguntaSelecionada }])
+        // filtraListaPergunta(idPerguntaSelecionada);
     }
 
-    const filtraListaPergunta = (idDimensao: number) => {
-        mockListPergunta.filter(pergunta=> pergunta.id === idDimensao && pergunta.alternativas?.push({valorAlternativa:valorAlternativa, alternativa:alternativa}))
-    }
+    // const filtraListaPergunta = (idDimensao: number) => {
+    //     mockListPergunta.filter(pergunta=> pergunta.id === idDimensao && pergunta.alternativas?.push({valorAlternativa:valorAlternativa, alternativa:alternativa}))
+    // }
 
     return (
         <ContainerModal

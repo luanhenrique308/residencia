@@ -14,11 +14,11 @@ type ModalPerguntasProps= {
 const ModalPerguntas = ({stateModal= false, handle}:ModalPerguntasProps)=>{
     const [pergunta, setPergunta] = useState<string>("");
     const [listPerguntas, setListPerguntas] = useState<Array<Perguntas>>([]);
-    const [atributoSelecionado, setAtributoSelecionado] =  useState<number>(0);
+    const [idAtributoSelecionado, setIdAtributoSelecionado] =  useState<number>(0);
     
     const adicionarPerguntaList = ()=>{
-        mockListPergunta.push({pergunta:pergunta})
-        setListPerguntas([...listPerguntas, {pergunta:pergunta, alternativas:[], id:mockListPergunta.length+1}])
+        mockListPergunta.push({pergunta:pergunta, id:mockListPergunta.length+1, id_Atributo:idAtributoSelecionado})
+        setListPerguntas([...listPerguntas, {pergunta:pergunta, id:mockListPergunta.length+1, id_Atributo:idAtributoSelecionado}])
     }
 
     return(
@@ -27,7 +27,7 @@ const ModalPerguntas = ({stateModal= false, handle}:ModalPerguntasProps)=>{
             handle={handle}
         >
             <Container>
-                <select value={atributoSelecionado} onChange={(e)=>{setAtributoSelecionado(parseInt(e.target.value))}}>
+                <select value={idAtributoSelecionado} onChange={(e)=>{setIdAtributoSelecionado(parseInt(e.target.value))}}>
                     {mockListAtributo.map((item)=>{
                         return(
                             <option value={item.id} key={item.id} >{item.nomeAtributo}</option>

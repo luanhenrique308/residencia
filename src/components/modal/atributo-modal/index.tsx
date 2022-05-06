@@ -14,16 +14,17 @@ const ModalAtributo = ({ name, stateModal = false, handle }: ModalAtributoProps)
 
     const [nomeAtributo, setNomeAtributo] = useState<string>('');
     const [listaAtributo, setListaAtributo] = useState<Array<Atributos>>([]);
-    const [dimensaoSelecionada, setDimensaoSelecionada] = useState<number>(0);
+    const [idDimensaoSelecionada, setIdDimensaoSelecionada] = useState<number>(0);
     
     const adicionarAtributoList = () => {
-        mockListAtributo.push({ nomeAtributo: nomeAtributo })
-        setListaAtributo([...listaAtributo, { nomeAtributo: nomeAtributo }])
-        filtraListaDimensao(dimensaoSelecionada)
+        // mockListAtributo.push({ nomeAtributo: nomeAtributo, id: mockListAtributo.length+1, id_Dimensao:idDimensaoSelecionada })
+        setListaAtributo([...listaAtributo, { nomeAtributo: nomeAtributo, id: mockListAtributo.length+1, id_Dimensao:idDimensaoSelecionada }])
+        mockListAtributo.push({nomeAtributo:nomeAtributo, id:mockListAtributo.length+1, id_Dimensao:idDimensaoSelecionada})
+        // filtraListaDimensao(idDimensaoSelecionada)
     }
 
     const filtraListaDimensao = (idDimensao: number) => {
-        mockListDimensao.filter(dimensao=> dimensao.id === idDimensao && dimensao.atributos?.push({nomeAtributo:nomeAtributo}))
+        // mockListDimensao.filter(dimensao=> dimensao.id === idDimensao && dimensao.atributos?.push({nomeAtributo:nomeAtributo}))
     }
     
     return (
@@ -35,7 +36,7 @@ const ModalAtributo = ({ name, stateModal = false, handle }: ModalAtributoProps)
                 <input type="text" value={nomeAtributo} onChange={(e) => { setNomeAtributo(e.target.value) }} />
                 <button onClick={adicionarAtributoList}>add atributo</button>
             </div>
-            <select value={dimensaoSelecionada} onChange={(e) => { setDimensaoSelecionada(parseInt(e.target.value)) }}>
+            <select value={idDimensaoSelecionada} onChange={(e) => { setIdDimensaoSelecionada(parseInt(e.target.value)) }}>
                 {mockListDimensao?.map((item) => {
                     return (
                         <option value={item.id} key={item.id}>{item.nomeDimensao}</option>
