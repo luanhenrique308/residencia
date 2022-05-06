@@ -15,7 +15,7 @@ const ModalDimensao = ({handle, stateModal}:ModalDimensaoProps)=>{
     const [listaDimensaoCadastrada, setListaDimensaoCadastrada] = useState<Array<Dimensao>>([])
     
     const addDimensaoLista = ()=>{
-        mockListDimensao.push({nomeDimensao:nomeDimensao})
+        mockListDimensao.push({nomeDimensao:nomeDimensao, id: (mockListDimensao.length+1), atributos:[]})
         setListaDimensaoCadastrada([...mockListDimensao])
     }
 
